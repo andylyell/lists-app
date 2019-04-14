@@ -1,0 +1,88 @@
+{
+    "lists": [
+        { 
+            "_id": "xcbhw487dn39dnj9t02",
+            "listName": "shopping-list",
+            "dateCreated": "124378632123",
+            "totalCost": 11.24,
+            "showChecked": true,
+            "categories": [
+                "Vegetables",
+                "Meat",
+                "Dairy",
+                "Fish"
+            ],
+            "listItems": [
+                {
+                    "_id": "3bd02dbjweui3ybnmde",
+                    "listItemName": "Carrots",
+                    "isChecked": true,
+                    "amount": 3,
+                    "price": 0.59,
+                    "itemNotes": "something about this item",
+                    "category": "Vegetables"
+                },
+                {
+                    "_id": "fdhiow874328odhsj",
+                    "listItemName": "Celery",
+                    "isChecked": false,
+                    "amount": 1,
+                    "price": 1.20,
+                    "itemNotes": "something about this item",
+                    "category": ""
+                },
+                {
+                    "_id": "hfofycqw083hejksd",
+                    "listItemName": "Salmon",
+                    "isChecked": true,
+                    "amount": 2,
+                    "price": 3.59,
+                    "itemNotes": "something about this item",
+                    "category": "Fish"
+                }
+            ]
+         },
+         { 
+            "_id": "xcbhw487dn39dnj9t02",
+            "listName": "shopping-list",
+            "dateCreated": "124378632123",
+            "totalCost": 11.24,
+            "showChecked": true,
+            "categories": [
+                "Vegetables",
+                "Meat",
+                "Dairy",
+                "Fish"
+            ],
+            "listItems": [
+                {
+                    "_id": "3bd02dbjweui3ybnmde",
+                    "listItemName": "Carrots",
+                    "isChecked": true,
+                    "amount": 3,
+                    "price": 0.59,
+                    "itemNotes": "something about this item",
+                    "category": "Vegetables"
+                },
+                {
+                    "_id": "fdhiow874328odhsj",
+                    "listItemName": "Celery",
+                    "isChecked": false,
+                    "amount": 1,
+                    "price": 1.20,
+                    "itemNotes": "something about this item",
+                    "category": ""
+                },
+                {
+                    "_id": "hfofycqw083hejksd",
+                    "listItemName": "Salmon",
+                    "isChecked": true,
+                    "amount": 2,
+                    "price": 3.59,
+                    "itemNotes": "something about this item",
+                    "category": "Fish"
+                }
+            ]
+         }
+    ]
+}
