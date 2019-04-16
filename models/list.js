@@ -7,7 +7,7 @@ const ListSchema = new Schema(
         dateCreated: {type: Date, required: true},
         totalCost: {type: Number, require: true},
         categories: [{type: Schema.Types.ObjectId, ref:'Category'}],
-        listItems: [{type: Schema.Types.ObjectId, ref: 'item'}]
+        listItems: [{type: Schema.Types.ObjectId, ref: 'Item'}]
     }
 );
 

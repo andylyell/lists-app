@@ -8,7 +8,8 @@ const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const listRouter = require('./routes/lists');
-const categoryRouter = require('./routes/category');
+const categoryRouter = require('./routes/categories');
+const itemRouter = require('./routes/items');
 
 //------ DBCONFIG ------//
 
@@ -51,6 +52,7 @@ app.use(function (err, req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/lists', listRouter);
+app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
 
 //------ ROUTES ------//
