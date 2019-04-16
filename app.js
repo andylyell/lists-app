@@ -8,12 +8,13 @@ const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const listRouter = require('./routes/lists');
+const categoryRouter = require('./routes/category');
 
 //------ DBCONFIG ------//
 
 const db = require('./config/keys');
 //connect to mongoDB
-mongoose.connect(db.mongoURI)
+mongoose.connect(db.mongoURI, { useNewUrlParser: true })
 .then(() => {
   console.log('MongoDB Connected');
 })
@@ -40,7 +41,7 @@ app.use(cookieParser());
 //------ ERROR HANDLING ------//
 
 app.use(function (err, req, res, next) {
-  console.error(err.stack)
+  console.error(err.stack);
   res.status(500).send('Something broke!');
 })
 
@@ -50,6 +51,7 @@ app.use(function (err, req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/lists', listRouter);
+app.use('/categories', categoryRouter);
 
 //------ ROUTES ------//
 
