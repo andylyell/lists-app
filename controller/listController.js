@@ -3,34 +3,73 @@ const List = require('../models/list');
 //------- GET A LIST OF LISTS -------//
 exports.getLists = (req, res, next) => {
 
-    List.find({}, (err, lists) => {
+
+    List.find({})
+    .populate('categories')
+    .populate({
+        path: "listItems",
+        model: "Item",
+        populate: {
+            path: 'category',
+            model: 'Category'
+        }
+    })
+    .exec((err, getLists) => {
         if(err){
-            console.log('something went wrong getting a list of lists for you');
+            console.log('could not get all lists');
             next(err);
+        } else{
+            res.json(getLists);
         }
-        else {
-            res.json(lists);
-        }
-    });
+    })
 
     //---- ALTERNATIVE WAY WITH PROMISE BASED HANDLING ----//
     // List.find()
     // .then(data => res.json(data))
     // .catch(next)
+
+    //---- OLD ALTERNATIVE ----//
+    // List.find({}, (err, lists) => {
+    //     if(err){
+    //         console.log('something went wrong getting a list of lists for you');
+    //         next(err);
+    //     }
+    //     else {
+    //         res.json(lists);
+    //     }
+    // });
 }
 
 //------- GET A SINGLE LIST -------//
 exports.getList = (req, res, next) => {
 
-    List.findById(req.params.id, (err, list) => {
-        if(err){
-            console.log('Could not find the list you were looking for');
-            next(err);
-        }
-        else {
-            res.json(list);
-        }
+    // List.findById(req.params.id, (err, list) => {
+    //     if(err){
+    //         console.log('Could not find the list you were looking for');
+    //         next(err);
+    //     }
+    //     else {
+    //         res.json(list);
+    //     }
+    // })
 
+    List.findById(req.params.id)
+    .populate('categories')
+    .populate({
+        path: "listItems",
+        model: "Item",
+        populate: {
+            path: 'category',
+            model: 'Category'
+        }
+    })
+    .exec((err, getLists) => {
+        if(err){
+            console.log('could not get all lists');
+            next(err);
+        } else{
+            res.json(getLists);
+        }
     })
 }
 
@@ -57,7 +96,29 @@ exports.createList = (req, res, next) => {
 
 //------- UPDATE A LIST -------//
 exports.updateList = (req, res) => {
-    res.send('NOT IMPLEMENTED: update a list');
+
+    const query = req.params.id;
+    const update = req.body;
+    const options = {new: true};
+    
+    List.findByIdAndUpdate(query, update, options)
+    .populate('categories')
+    .populate({
+        path: "listItems",
+        model: "Item",
+        populate: {
+            path: 'category',
+            model: 'Category'
+        }
+    })
+    .exec((err, listUpdated) => {
+        if(err){
+            console.log('could not update list');
+            next(err);
+        } else{
+            res.json(listUpdated);
+        }
+    })
 }
 
 //------- DELETE A LIST -------//

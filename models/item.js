@@ -7,7 +7,10 @@ const ItemSchema = new Schema(
         amount: {type: Number},
         price: {type: Number},
         notes: {type: String},
-        category: {type: Schema.Types.ObjectId, ref:'Category'}
+        category: {
+            type: Schema.Types.ObjectId, 
+            ref:'Category'
+        }
     }
 );
 

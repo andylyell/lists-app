@@ -16,12 +16,23 @@ exports.getItems = (req, res, next) => {
 
 exports.getItem = (req, res, next) => {
     
-    Item.findById(req.params.id, (err, item) => {
+    // Item.findById(req.params.id, (err, item) => {
+    //     if(err){
+    //         console.log('could not find item');
+    //         next(err);
+    //     }
+    //     else {
+    //         res.json(item);
+    //     }
+    // })
+
+    Item.findById(req.params.id)
+    .populate('category')
+    .exec((err, item) => {
         if(err){
             console.log('could not find item');
             next(err);
-        }
-        else {
+        } else{
             res.json(item);
         }
     })
@@ -43,7 +54,32 @@ exports.createItem = (req, res, next) => {
 }
 
 exports.updateItem = (req, res, next) => {
-    res.send('NOT IMPLEMENTED: update an item');
+
+    const query = req.params.id;
+    const update = req.body;
+    console.log(update);
+    const options = {new: true};
+
+    // Item.findByIdAndUpdate(query, update, options, (err, itemUpdated) => {
+    //     if(err){
+    //         console.log('error updating item');
+    //         next(err);
+    //     }
+    //     else{
+    //         res.json(itemUpdated);
+    //     }
+    // })
+
+    Item.findByIdAndUpdate(query, update, options)
+    .populate('category')
+    .exec((err, itemCreated) => {
+        if(err){
+            console.log('could not update item');
+            next(err);
+        } else{
+            res.json(itemCreated);
+        }
+    })
 }
 
 exports.deleteItem = (req, res, next) => {
@@ -53,7 +89,7 @@ exports.deleteItem = (req, res, next) => {
             console.log('Could not delete the item');
             next(err);
         } else {
-            res.json(itemDelete);
+            res.json(itemDelete)
         }
     })
 
