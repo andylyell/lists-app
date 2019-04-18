@@ -1,4 +1,6 @@
 const List = require('../models/list');
+const Item = require('../models/item');
+const Category = require('../models/category');
 
 //------- GET A LIST OF LISTS -------//
 exports.getLists = (req, res, next) => {
@@ -19,7 +21,11 @@ exports.getLists = (req, res, next) => {
             console.log('could not get all lists');
             next(err);
         } else{
-            res.json(getLists);
+            if(getLists.length === 0){
+                res.send(`No lists found - create one to get started`);
+            } else {
+                res.json(getLists);
+            }
         }
     })
 
@@ -123,20 +129,49 @@ exports.updateList = (req, res) => {
 
 //------- DELETE A LIST -------//
 exports.deleteList = (req, res, next) => {
-    
-    List.findByIdAndDelete(req.params.id, (err, listDelete) => {
-        if(err) {
-            console.log('could not delete the list');
-            next(err);
-        } else {
-            if(listDelete === null){
-                res.send('List has already been delete');
-            } 
-            else {
-                res.json(listDelete);
-            }
-            
+
+    // Need to delete everything inside it as well.
+    List.findById(req.params.id)
+    .then(data => { 
+        if(data.categories.length !== 0){
+            data.categories.forEach((category) => {
+                Category.findById(category)
+                .then(cat => console.log(cat))
+            })
+        }
+        if(data.listItems.length !== 0){
+            data.listItems.forEach((item) => {
+                Item.findById(item)
+                .then(it => console.log(it))
+            })
         }
     })
+    .then(res.send(`you done lol`))
+    .catch(next);
+
+    // List.findById(req.params.id)
+    // .then(data => {
+    //     console.log(data.categories);
+    //     console.log(data.listItems);
+    //     res.json(data);
+    // })
+    // .catch(next)
+
+    // console.log(categoriesToDelete);
+    
+    // List.findByIdAndDelete(req.params.id, (err, listDelete) => {
+    //     if(err) {
+    //         console.log('could not delete the list');
+    //         next(err);
+    //     } else {
+    //         if(listDelete === null){
+    //             res.send('List has already been delete');
+    //         } 
+    //         else {
+    //             res.json(listDelete);
+    //         }
+            
+    //     }
+    // })
 
 }

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const ItemSchema = new Schema(
     {
         name: {type: String, required: true},
+        isChecked: {type: Boolean, require: true},
         amount: {type: Number},
         price: {type: Number},
         notes: {type: String},

@@ -9,7 +9,13 @@ exports.getCategories = (req, res, next) => {
             next(err);
         }
         else {
-            res.json(categories);
+            if(categories.length === 0){
+                res.send(`No categories could be found - create some to get started`);
+            } 
+            else {
+                res.json(categories);
+            } 
+            
         }
     })
     
@@ -76,7 +82,7 @@ exports.deleteCategory = (req, res, next) => {
                 res.send('Category has already been deleted');
             }
             else{
-                res.json(categoryDelete);
+                res.send(`The Category '${categoryDelete.name}' has been deleted`);
             }
         }
     })

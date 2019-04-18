@@ -2,13 +2,29 @@ const Item = require('../models/item');
 
 exports.getItems = (req, res, next) => {
     
-    Item.find({}, (err, items) => {
+    // Item.find({}, (err, items) => {
+    //     if(err){
+    //         console.log('Something went wrong getting list of items');
+    //         next(err);
+    //     }
+    //     else {
+    //         res.json(items);
+    //     }
+    // })
+    Item.find({})
+    .populate('category')
+    .exec((err, items) => {
         if(err){
             console.log('Something went wrong getting list of items');
             next(err);
         }
         else {
-            res.json(items);
+            if(items.length === 0){
+                res.send(`No items found - create some to get started`)
+            }
+            else {
+                res.json(items);
+            }
         }
     })
 
@@ -57,7 +73,6 @@ exports.updateItem = (req, res, next) => {
 
     const query = req.params.id;
     const update = req.body;
-    console.log(update);
     const options = {new: true};
 
     // Item.findByIdAndUpdate(query, update, options, (err, itemUpdated) => {
@@ -72,12 +87,12 @@ exports.updateItem = (req, res, next) => {
 
     Item.findByIdAndUpdate(query, update, options)
     .populate('category')
-    .exec((err, itemCreated) => {
+    .exec((err, itemUpdated) => {
         if(err){
             console.log('could not update item');
             next(err);
         } else{
-            res.json(itemCreated);
+            res.json(itemUpdated);
         }
     })
 }
