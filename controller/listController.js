@@ -135,18 +135,44 @@ exports.deleteList = (req, res, next) => {
     .then(data => { 
         if(data.categories.length !== 0){
             data.categories.forEach((category) => {
-                Category.findById(category)
-                .then(cat => console.log(cat))
+                Category.findByIdAndDelete(category, (err, categoryDelete) => {
+                    if(err){
+                        console.log('could not delete the category in the list');
+                        next(err);
+                    }
+                    else {
+                        console.log(`${categoryDelete}`)
+                    }
+                })
+                
             })
         }
         if(data.listItems.length !== 0){
             data.listItems.forEach((item) => {
-                Item.findById(item)
-                .then(it => console.log(it))
+                Item.findByIdAndDelete(item, (err, itemDelete) => {
+                    if(err){
+                        console.log('could not delete the item in the list');
+                        next(err);
+                    }
+                    else {
+                        console.log(`${itemDelete}`)
+                    }
+                })
             })
         }
+        return data;
     })
-    .then(res.send(`you done lol`))
+    .then(listData => {
+        List.findByIdAndDelete(listData, (err, listInfoData) => {
+            if(err){
+                console.log('could not delete the list');
+                next(err);
+            }
+            else {
+                res.send(`List: ${listInfoData.id} deleted`);
+            }
+        })
+    })
     .catch(next);
 
     // List.findById(req.params.id)
@@ -175,3 +201,17 @@ exports.deleteList = (req, res, next) => {
     // })
 
 }
+
+//////REFERENCE
+// exports.deleteItem = (req, res, next) => {
+    
+//     Item.findByIdAndDelete(req.params.id, (err, itemDelete) => {
+//         if(err){
+//             console.log('Could not delete the item');
+//             next(err);
+//         } else {
+//             res.json(itemDelete)
+//         }
+//     })
+
+// }
