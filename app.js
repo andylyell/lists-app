@@ -55,6 +55,16 @@ app.use('/lists', listRouter);
 app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
 
+// Route not found (404)
+app.use((req, res, next) => {
+  return res.status(404).send({ message: 'Route'+req.url+' Not found.' });
+})
+
+// Any Server Error
+app.use((err, req, res, next) => {
+  return res.status(500).send({error: err});
+})
+
 //------ ROUTES ------//
 
 

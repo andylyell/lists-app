@@ -1,0 +1,11 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; //means that pading and borders will be included in sizings not added on
+}
+
+html, body, #root{
+  height: 100%;
+}
