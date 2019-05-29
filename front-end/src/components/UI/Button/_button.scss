@@ -1,0 +1,26 @@
+.button{
+    &__container{
+        border-radius: 6px;
+        cursor: pointer;
+        transition: .3s;
+        display: flex;
+        align-items: center;
+    }
+
+    &__primary{
+        padding: 6px 6px 6px 14px;
+        background: $pink-1;
+        color: $white-1;
+        &:hover{
+            background: $pink-2;
+        }
+    }
+
+    &__secondary{
+        padding: 6px;
+        background: transparent;
+        &:hover{
+            background: $grey-2;
+        }
+    }
+}
