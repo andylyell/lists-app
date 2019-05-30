@@ -10,4 +10,8 @@
     &__button-group{
         display: flex;
     }
+
+    &__button-group div{
+        margin-right: 10px;
+    }
 }

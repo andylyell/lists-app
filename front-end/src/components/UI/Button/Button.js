@@ -8,8 +8,8 @@ const Button = (props) => {
     let icon = null;
 
     switch(props.btnType){
-        case('primary'): btnClasses = ['button__container', 'button__primary'].join(' '); iconColor = '#ffffff'; break;
-        case('secondary'): btnClasses = ['button__container', 'button__secondary'].join(' '); break;
+        case('primary'): btnClasses = ['button__container', 'button__primary'].join(' '); iconColor = 'primary'; break;
+        case('secondary'): btnClasses = ['button__container', 'button__secondary'].join(' '); iconColor = 'secondary'; break;
         default: btnClasses = 'button__primary'; break;
     }
 
@@ -21,7 +21,7 @@ const Button = (props) => {
     }
 
     return (
-        <div className={btnClasses}>
+        <div onClick={props.clicked} className={btnClasses}>
                 {props.text}
                 {icon}
         </div>

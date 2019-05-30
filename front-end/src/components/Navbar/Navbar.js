@@ -1,18 +1,24 @@
 import React from 'react'
 import Button from '../UI/Button/Button';
 
-const Navbar = (props) => {
+class Navbar extends React.Component {
 
-    return (
-        <div className="navbar__container">
-            <div className="navbar__button-group">
-                <Button btnType="secondary" iconType="menu"/>
-                <Button text="Add item" btnType="primary" iconType="add"/>
-                <Button text="Quick add" btnType="primary" iconType="add"/>
+    changeHandler = (e) => {
+        console.log(e.target);
+    }
+
+    render(){
+        return (
+            <div className="navbar__container">
+                <div className="navbar__button-group">
+                    <Button clicked={this.changeHandler} btnType="secondary" iconType="menu"/>
+                    <Button clicked={this.changeHandler} text="Add item" btnType="primary" iconType="add"/>
+                    <Button clicked={this.changeHandler} text="Quick add" btnType="primary" iconType="add"/>
+                </div>
+                <Button clicked={this.changeHandler} btnType="secondary" iconType="search"/>
             </div>
-            <Button btnType="secondary" iconType="search"/>
-        </div>
-    )
-}
+        )
+    };
+};
 
-export default Navbar
+export default Navbar;

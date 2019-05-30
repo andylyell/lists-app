@@ -1,0 +1,11 @@
+//1 em = 16px - not affected by root setting.
+
+@mixin respond($breakpoint){
+    @if $breakpoint == bp-smallest {
+      @media only screen and (max-width: 27.5em){@content}; //600px
+    }
+    @if $breakpoint == bp-small {
+      @media only screen and (max-width: 42.5em){@content}; //680px
+   }
+}
+  
