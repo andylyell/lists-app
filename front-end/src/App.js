@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Home from './components/Home/Home';
 
 import Navbar from './components/Navbar/Navbar';
 
@@ -34,7 +35,12 @@ class App extends Component {
       <BrowserRouter>
         <Navbar lists={this.state.lists}/>
         <Switch>
-          <Route exact path="/"></Route>
+          <Route 
+            exact 
+            path="/" 
+            render={(routeProps) => (
+              <Home {...routeProps} lists={this.state.lists}/>
+            )}/>
         </Switch>
       </BrowserRouter>
     )
