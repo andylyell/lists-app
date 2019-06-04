@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuIcon, AddIcon, SearchIcon } from '../../../assets/icons/index';
+import { MenuIcon, AddIcon, SearchIcon, CloseIcon } from '../../../assets/icons/index';
 
 const Button = (props) => {
 
@@ -10,11 +10,13 @@ const Button = (props) => {
     switch(props.btnType){
         case('primary'): btnClasses = ['button__container', 'button__primary'].join(' '); iconColor = 'primary'; break;
         case('secondary'): btnClasses = ['button__container', 'button__secondary'].join(' '); iconColor = 'secondary'; break;
+        case('tertiary'): btnClasses = ['button__container', 'button__tertiary'].join(' '); iconColor = 'tertiary'; break;
         default: btnClasses = 'button__primary'; break;
     }
 
     switch(props.iconType){
         case('add'): icon = <AddIcon dimensions="32" iconColor={iconColor}/>; break;
+        case('close'): icon = <CloseIcon dimensions="32" iconColor={iconColor}/>; break;
         case('menu'): icon = <MenuIcon dimensions="32" iconColor={iconColor}/>; break;
         case('search'): icon = <SearchIcon dimensions="32" iconColor={iconColor}/>; break;
         default: icon = null;

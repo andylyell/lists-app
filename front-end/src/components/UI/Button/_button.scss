@@ -23,4 +23,11 @@
             background: $grey-2;
         }
     }
+
+    &__tertiary{
+        padding: 6px;
+        &:hover{
+            background: $dblue-2;
+        }
+    }
 }

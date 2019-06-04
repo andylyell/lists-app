@@ -6,14 +6,16 @@ import Navbar from './components/Navbar/Navbar';
 class App extends Component {
 
   state = {
-    response: ""
+    lists: ""
   }
 
   componentDidMount() {
     this.callApi()
     .then(res => {
       console.log(res)
-      this.setState({response: res})
+      this.setState({
+        lists: res
+      })
     })
     .catch(err => console.log(err));
   }
@@ -30,7 +32,7 @@ class App extends Component {
   render(){
     return (
       <BrowserRouter>
-        <Navbar/>
+        <Navbar lists={this.state.lists}/>
         <Switch>
           <Route exact path="/"></Route>
         </Switch>

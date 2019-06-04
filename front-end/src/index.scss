@@ -2,9 +2,11 @@
 @import 'styles/reset';
 @import 'styles/fonts';
 @import 'styles/variables';
+@import 'styles/typestyles';
 
 //Components
 @import 'components/Navbar/navbar';
+@import 'components/Navbar/SideNav/sidenav';
 
 //UI Components
 @import 'components/UI/Button/button';
