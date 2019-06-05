@@ -1,8 +1,10 @@
 //Styles
+@import 'styles/mixins';
 @import 'styles/reset';
 @import 'styles/fonts';
 @import 'styles/variables';
 @import 'styles/typestyles';
+@import 'styles/base';
 
 //Components
 @import 'components/Navbar/navbar';

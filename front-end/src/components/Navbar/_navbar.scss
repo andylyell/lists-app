@@ -1,7 +1,7 @@
 .navbar{
     &__container{
         background: $grey-1;
-        padding: 20px 30px;
+        padding: 2rem 3rem;
         border-radius: 0 0 6px 6px;
         display: flex;
         justify-content: space-between;
@@ -12,6 +12,6 @@
     }
 
     &__button-group div{
-        margin-right: 10px;
+        margin-right: 1rem;
     }
 }

@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 class App extends Component {
 
   state = {
-    lists: ""
+    lists: []
   }
 
   componentDidMount() {
