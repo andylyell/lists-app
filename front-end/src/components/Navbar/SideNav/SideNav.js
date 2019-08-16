@@ -6,7 +6,7 @@ const SideNav = (props) => {
     let sideNavClasses = null;
     props.sideNavToggled ? sideNavClasses = ['sidenav__container', 'sidenav__container--open'].join(' ') : sideNavClasses = 'sidenav__container';
 
-    return (
+    return (    
         <div className={sideNavClasses}>
             <div className="sidenav__header">
                 <div className="sidenav__header-button-group">
@@ -15,6 +15,7 @@ const SideNav = (props) => {
                 </div>
                 <Button clicked={show} text="Create list" btnType="primary" iconType="add"/>
             </div>
+            {/* list names here that are clickable */}
         </div>
     )
 }

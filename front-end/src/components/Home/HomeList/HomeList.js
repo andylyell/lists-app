@@ -29,9 +29,13 @@ function HomeList(props) {
         return `${counter} / ${props.listItems.length}`;
     }
 
+    function clickMe() {
+        console.log('I have been clicked');
+    }
+
     return (
         <div className="homelist__container">
-            <h4 className="homelist__list-title">{props.listName}</h4>
+            <h4 onClick={clickMe} className="homelist__list-title">{props.listName}</h4>
             <div className="homelist__info-group">
                 <p className={itemStyles}>{listItemsCompleted}</p>
                 <Button clicked={console.log('button')} btnType="secondary" iconType="settings"/>

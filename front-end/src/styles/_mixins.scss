@@ -3,7 +3,7 @@
       @media only screen and (max-width: 27.5em){@content}; //600px
     }
     @if $breakpoint == bp-small {
-      @media only screen and (max-width: 42.5em){@content}; //680px
+      @media only screen and (max-width: 42.5em){@content}; 
    }
 }
   
