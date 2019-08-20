@@ -6,6 +6,7 @@ function HomeList(props) {
     let counter = 0;
     let itemStyles = '';
     let listItemsCompleted = null;
+    let homeContainerStyles = null;
 
     if(props.listItems.length !== 0){
         props.listItems.forEach(item => {
@@ -25,17 +26,23 @@ function HomeList(props) {
         listItemsCompleted = returnListCounter()
     }
 
+    if(props.isActive){
+        homeContainerStyles = ['homelist__container', 'homelist--active'].join(' ');
+    } else {
+        homeContainerStyles = 'homelist__container';
+    }
+
     function returnListCounter() {
         return `${counter} / ${props.listItems.length}`;
     }
 
-    function clickMe() {
-        console.log('I have been clicked');
+    function changeActiveList(e) {
+        props.getActiveList(props.listId);
     }
 
     return (
-        <div className="homelist__container">
-            <h4 onClick={clickMe} className="homelist__list-title">{props.listName}</h4>
+        <div className={homeContainerStyles} onClick={changeActiveList}>
+            <h4 className="homelist__list-title">{props.listName}</h4>
             <div className="homelist__info-group">
                 <p className={itemStyles}>{listItemsCompleted}</p>
                 <Button clicked={console.log('button')} btnType="secondary" iconType="settings"/>
