@@ -12,10 +12,20 @@ function Home(props) {
         listName={list.name}
         listItems={list.listItems}
         listCategories={list.categories}
-        isActive={props.activeList === list._id}
+        isActive={props.activeList._id === list._id}
         getActiveList={props.getActiveList}
         />
     );
+
+    // const findActiveList = (lists) => {
+    //     let activeList = props.lists.filter(list =>{
+    //         return list._id === props.activeList;
+    //     })
+    //     activeList = activeList[0];
+    //     return activeList; 
+    // }
+
+    // const newActiveList = findActiveList(props.lists);
 
     return (
         <div className="home__wrapper">
@@ -26,7 +36,9 @@ function Home(props) {
                 </div>
                 {lists}
             </div>
-            <List activeList={props.activeList}/>
+            <div className="home__single-list">
+                <List activeList={props.activeList}/>
+            </div>
         </div>
     )
 }

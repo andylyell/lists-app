@@ -8,7 +8,7 @@ class App extends Component {
 
   state = {
     lists: [],
-    activeList: null
+    activeList: {}
   }
 
   componentDidMount() {
@@ -17,13 +17,14 @@ class App extends Component {
       const sortedLists = res.sort(sortAlphabetically("name")) //sort lists alphabetically
       this.setState({
         lists: sortedLists,
-        activeList: sortedLists[0]._id
+        activeList: sortedLists[0]
       })
     })
     .catch(err => console.log(err));
   }
 
   getActiveList = (listId) => {
+    console.log(listId)
     this.setState({
       activeList: listId
     })
@@ -39,7 +40,6 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.state.activeList)
     return (
       <>
       <Navbar lists={this.state.lists}/>
