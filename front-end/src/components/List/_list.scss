@@ -1,0 +1,12 @@
+.list{
+    &__title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__control-group{
+        display: flex;
+        align-items: center;
+    }
+}

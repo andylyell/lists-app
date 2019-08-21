@@ -1,11 +1,23 @@
 .home{
+
+    &__wrapper{
+        display: flex;
+    }
+
     &__container{
         padding: 2rem;
         width: 40%;
-
     }
 
-    &__title{
-        margin-bottom: 2rem;
+    &__single-list{
+        width: 60%;
+        padding: 2rem;
+    }
+
+    &__title-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
     }
 }

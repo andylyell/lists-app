@@ -7,18 +7,27 @@ import Navbar from './components/Navbar/Navbar';
 class App extends Component {
 
   state = {
-    lists: []
+    lists: [],
+    activeList: {}
   }
 
   componentDidMount() {
     this.callApi()
     .then(res => {
-      console.log(res)
+      const sortedLists = res.sort(sortAlphabetically("name")) //sort lists alphabetically
       this.setState({
-        lists: res
+        lists: sortedLists,
+        activeList: sortedLists[0]
       })
     })
     .catch(err => console.log(err));
+  }
+
+  getActiveList = (listId) => {
+    console.log(listId)
+    this.setState({
+      activeList: listId
+    })
   }
 
   callApi = async () => {
@@ -32,19 +41,42 @@ class App extends Component {
 
   render(){
     return (
+      <>
+      <Navbar lists={this.state.lists}/>
       <BrowserRouter>
-        <Navbar lists={this.state.lists}/>
         <Switch>
           <Route 
             exact 
             path="/" 
             render={(routeProps) => (
-              <Home {...routeProps} lists={this.state.lists}/>
+              <Home {...routeProps} getActiveList={this.getActiveList} lists={this.state.lists} activeList={this.state.activeList}/>
             )}/>
         </Switch>
       </BrowserRouter>
+      </>
     )
   }
 }
 
 export default App;
+
+// #region Functions
+
+const sortAlphabetically = (property) => {
+  let sortOrder = 1;
+
+  if(property[0] === '-'){
+    sortOrder = -1;
+    property = property.substr(1);
+  }
+
+  return function (a,b) {
+    if(sortOrder === -1){
+        return b[property].localeCompare(a[property]);
+    }else{
+        return a[property].localeCompare(b[property]);
+    }        
+  }
+}
+
+// #endregion
