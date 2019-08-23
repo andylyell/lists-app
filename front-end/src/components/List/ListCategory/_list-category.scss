@@ -1,5 +1,5 @@
 .list-category{
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,8 +10,18 @@
     }
 
     &__control-container{
-        background: peru;
         display: flex;
         align-items: center;
+    }
+
+    &__item-checker{
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        color: $grey-3;
+    }
+
+    &__caret-icon{
+        margin-right: 1rem;
+        margin-left: -0.8rem;
     }
 }

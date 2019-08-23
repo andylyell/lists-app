@@ -52,6 +52,7 @@ const List = (props) => {
             <div className="list__title">
                 <h1>{props.activeList.name}</h1>
                 <div className="list__control-group">
+                    <Button btnType="secondary" iconType="add" text="Add Category"/>
                     <Button btnType="primary" iconType="add" text="Add Item"/>
                     <Button btnType="secondary" iconType="settings"/>
                 </div>
