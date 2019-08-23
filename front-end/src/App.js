@@ -15,6 +15,7 @@ class App extends Component {
     this.callApi()
     .then(res => {
       const sortedLists = res.sort(sortAlphabetically("name")) //sort lists alphabetically
+      // console.log(sortedLists);
       this.setState({
         lists: sortedLists,
         activeList: sortedLists[0]

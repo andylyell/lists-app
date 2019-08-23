@@ -1,0 +1,17 @@
+.list-category{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title-container{
+        display: flex;
+        align-items: center;
+    }
+
+    &__control-container{
+        background: peru;
+        display: flex;
+        align-items: center;
+    }
+}
