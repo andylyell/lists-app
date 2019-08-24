@@ -1,9 +1,12 @@
 import React from 'react'
 
 const ListItem = (props) => {
+
+    const { name } = props.itemDetail;
+
     return (
-        <div>
-            This is the list item component
+        <div className="list-item">
+            {name}
         </div>
     )
 }

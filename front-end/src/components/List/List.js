@@ -42,9 +42,9 @@ const List = (props) => {
 
     
     newCategories = newCategoryArray.map((category) => 
-    <ListCategory
-        key={category._id}
-        categoryDetail={category}
+        <ListCategory
+            key={category._id}
+            categoryDetail={category}
     />)
         
     return (
