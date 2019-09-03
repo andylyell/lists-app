@@ -1,13 +1,15 @@
 import React from 'react'
 import Button from '../UI/Button/Button';
 import ListCategory from './ListCategory/ListCategory';
+import { itemCheckedCounter } from '../../helpers/itemCheckedCounter';
 
 const List = (props) => {
 
     const { categories, listItems } = props.activeList;
     
     let newCategoryArray = [];
-    let newCategories = []
+    let newCategories = [];
+    let checkedCount = {};
     
 
     if(categories){
@@ -16,6 +18,7 @@ const List = (props) => {
             category.listItems = [];
         })
         if(listItems){
+            checkedCount = itemCheckedCounter(listItems);
             let noListCategory = {
                 "_id": Math.floor(Math.random() * 1000000000),
                 "name": 'itemsWithNoCategories',
@@ -39,8 +42,6 @@ const List = (props) => {
     } else {
         console.log('no categories');
     }
-
-    
     newCategories = newCategoryArray.map((category) => 
         <ListCategory
             key={category._id}
@@ -49,12 +50,17 @@ const List = (props) => {
         
     return (
         <div>
-            <div className="list__title">
-                <h1>{props.activeList.name}</h1>
-                <div className="list__control-group">
-                    <Button btnType="secondary" iconType="add" text="Add Category"/>
-                    <Button btnType="primary" iconType="add" text="Add Item"/>
-                    <Button btnType="secondary" iconType="settings"/>
+            <div className="list__title-container">
+                <div className="list__title">
+                    <h1>{props.activeList.name}</h1>
+                    <div className="list__control-group">
+                        <Button btnType="secondary" iconType="add" text="Add Category"/>
+                        <Button btnType="primary" iconType="add" text="Add Item"/>
+                        <Button btnType="secondary" iconType="settings"/>
+                    </div>
+                </div>
+                <div className="list__information">
+                    {checkedCount.counter} / {checkedCount.itemsLength}  checked
                 </div>
             </div>
             {newCategories}

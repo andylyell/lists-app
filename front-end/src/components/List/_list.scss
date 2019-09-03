@@ -1,8 +1,15 @@
 .list{
+
+    &__title-container{
+        display: flex;
+        flex-direction: column;
+    }
+
     &__title{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 1.6rem;
     }
 
     &__control-group{
@@ -11,5 +18,16 @@
         & > * {
             margin-left: 1rem;
         }
+    }
+
+    &__information{
+        padding: 1.2rem 0;
+        color: $dgrey-1;
+        display: flex;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        justify-content: flex-end;
+        border-top: 1px solid $grey-2;
+        border-bottom: 1px solid $grey-2;
     }
 }

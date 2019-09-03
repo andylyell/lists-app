@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../../UI/Button/Button';
 import ListItem from '../ListItem/ListItem';
+import { itemCheckedCounter } from '../../../helpers/itemCheckedCounter';
 
 const ListCategory = (props) => {
 
@@ -11,14 +12,10 @@ const ListCategory = (props) => {
     const { name, listItems } = props.categoryDetail;
 
     let renderedList;
-    let counter = 0;
+    let checkedCount = {};
 
     if(listItems.length !== 0){
-        listItems.forEach(item => {
-            if(item.isChecked){
-                counter++
-            }
-        })
+        checkedCount = itemCheckedCounter(listItems);
     }
 
     let listItemsArray = [];
@@ -43,7 +40,7 @@ const ListCategory = (props) => {
                 </div>
                 <div className="list-category__control-container">
                     <div className="list-category__item-checker">
-                        {counter}/{listItems.length} checked
+                        {checkedCount.counter}/{checkedCount.itemsLength} checked
                     </div>
                     <Button btnType="secondary" iconType="settings"/>
                 </div>
