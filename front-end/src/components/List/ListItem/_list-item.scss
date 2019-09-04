@@ -10,9 +10,25 @@
 
     &__title{
         font-size: 1.4rem;
+        display: flex;
+        align-items: center;
     }
 
     &__control-group{
         display: flex;
+        align-items: center;
+    }
+
+    &__checkbox{
+        margin-right: 1rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    &__amount{
+        margin-right: 1rem;
+        font-size: 1.2rem;
+        color: $bgrey-1;
     }
 }
