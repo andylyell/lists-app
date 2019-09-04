@@ -36,8 +36,8 @@ function HomeList(props) {
         return `${counter} / ${props.listItems.length}`;
     }
 
-    function changeActiveList(e) {
-        props.getActiveList(props.listId);
+    function changeActiveList() {
+        props.getActiveList(props.listDetail);
     }
 
     return (
@@ -45,7 +45,7 @@ function HomeList(props) {
             <h4 className="homelist__list-title">{props.listName}</h4>
             <div className="homelist__info-group">
                 <p className={itemStyles}>{listItemsCompleted}</p>
-                <Button clicked={console.log('button')} btnType="secondary" iconType="settings"/>
+                <Button btnType="secondary" iconType="settings"/>
             </div>
         </div>
     )
