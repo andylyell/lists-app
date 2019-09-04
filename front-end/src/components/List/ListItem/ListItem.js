@@ -6,7 +6,13 @@ const ListItem = (props) => {
 
     return (
         <div className="list-item">
-            {name}
+            <div className="list-item__title">
+                {name}
+            </div>
+            <div className="list-item__control-group">
+                <p>AMOUNT</p>
+                <p>EDIT</p>
+            </div>
         </div>
     )
 }

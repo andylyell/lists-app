@@ -4,4 +4,15 @@
     padding: 1.6rem;
     margin-bottom: 1rem;
     border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__title{
+        font-size: 1.4rem;
+    }
+
+    &__control-group{
+        display: flex;
+    }
 }
