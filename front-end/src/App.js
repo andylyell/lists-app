@@ -24,10 +24,9 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
-  getActiveList = (listId) => {
-    console.log(listId)
+  getActiveList = (list) => {
     this.setState({
-      activeList: listId
+      activeList: list
     })
   }
 

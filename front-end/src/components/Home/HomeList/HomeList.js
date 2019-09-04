@@ -36,8 +36,8 @@ function HomeList(props) {
         return `${counter} / ${props.listItems.length}`;
     }
 
-    function changeActiveList(e) {
-        props.getActiveList(props.listId);
+    function changeActiveList() {
+        props.getActiveList(props.listDetail);
     }
 
     return (
